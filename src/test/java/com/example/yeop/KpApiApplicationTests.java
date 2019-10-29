@@ -1,8 +1,5 @@
 package com.example.yeop;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
@@ -12,7 +9,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.aspectj.lang.annotation.After;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -23,7 +19,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.FileCopyUtils;
-
 import com.example.yeop.entity.Finance;
 import com.example.yeop.repository.FinanceRepository;
 import com.opencsv.CSVReader;
@@ -112,25 +107,25 @@ class KpApiApplicationTests {
     }
     
 
-    @Test
-    public void financeRepoTest() {
-        //given
-        repository.save(Finance.builder()
-                .year(2005)
-                .month(1)
-                .institute_code("bnk1111")
-                .value(1000)
-                .build());
-
-        //when
-        List<Finance> srcList = repository.findAll();
-
-        //then
-        Finance finance = srcList.get(0);
-        assertThat(finance.getYear(), is(2005));
-        assertThat(finance.getMonth(), is(1));
-    }
-    
+//    @Test
+//    public void financeRepoTest() {
+//        //given
+//        repository.save(Finance.builder()
+//                .year(2005)
+//                .month(1)
+//                .instituteCode("bnk1111")
+//                .value(1000)
+//                .build());
+//
+//        //when
+//        List<Finance> srcList = repository.findAll();
+//
+//        //then
+//        Finance finance = srcList.get(0);
+//        assertThat(finance.getYear(), is(2005));
+//        assertThat(finance.getMonth(), is(1));
+//    }
+//    
 	
 }
 

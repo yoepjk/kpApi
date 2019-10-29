@@ -6,12 +6,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import com.example.yeop.entity.Finance;
+import com.example.yeop.vo.TotalByYear;
 
 
 @Repository
-public interface FinanceRepository extends JpaRepository<Finance, Long>{
-	@Query(value = "SELECT * FROM finance WHERE id = :id", nativeQuery = true)
-	List<Finance> findAllById(@Param("id") Long id);
-	
-
+public interface FinanceRepository extends JpaRepository<Finance, Long>, FinanceRepositoryCustom {
 }
+

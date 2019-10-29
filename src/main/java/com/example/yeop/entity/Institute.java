@@ -1,10 +1,11 @@
 package com.example.yeop.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -22,15 +23,15 @@ public class Institute {
 	@GeneratedValue
     private Integer id;	
 	
-	@Column
-	private String institute_name;
+	@Column(name="name")
+	private String name;
 	
-	@Column
-	private String institute_code;
+	@Column(name="code")
+	private String code;
 	
 	@Builder
 	public Institute(String name, String code) {
-		institute_name = name;
-		institute_code = code;
+		this.name = name;
+		this.code = code;
 	}
 }

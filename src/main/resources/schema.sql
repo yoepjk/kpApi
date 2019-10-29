@@ -15,8 +15,8 @@ CREATE INDEX institute_code ON finance(institute_code);
 
 CREATE TABLE institute (
   id int NOT NULL auto_increment,
-  institute_name varchar(30) NOT NULL,
-  institute_code varchar(30) NOT NULL,
+  name varchar(30) NOT NULL,
+  code varchar(30) NOT NULL,
   PRIMARY KEY  (id)
 );
 

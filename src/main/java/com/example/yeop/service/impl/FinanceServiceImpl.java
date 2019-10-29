@@ -7,12 +7,12 @@ import org.springframework.stereotype.Service;
 import com.example.yeop.entity.Finance;
 import com.example.yeop.repository.FinanceRepository;
 import com.example.yeop.service.FinanceService;
+import com.example.yeop.vo.TotalByYear;
 
 
 @Service("FinanceService")
 public class FinanceServiceImpl implements FinanceService {
-	@Autowired
-	private FinanceRepository finRepository;
+	@Autowired private FinanceRepository finRepository;
 	
 	public void createAll(List<Finance> finance_list) {
 		finRepository.saveAll(finance_list);
@@ -22,7 +22,10 @@ public class FinanceServiceImpl implements FinanceService {
 	public List<Finance> getAll() {
 		return finRepository.findAll();
 	}
-
+	
+	public List<TotalByYear> getTotalByYear() {
+		return finRepository.findTotalByYear();
+	}
 	
 	public void deleteAll() {
 		finRepository.deleteAll();
