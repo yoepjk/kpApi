@@ -15,11 +15,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.example.yeop.service.FinanceService;
+import com.example.yeop.service.InstituteService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(FinanceController.class)
-public class FinanceControllerTest {
+@WebMvcTest(InstituteController.class)
+public class InstituteControllerTest {
 	private Logger logger = LoggerFactory.getLogger(getClass());
 
 	@Autowired
@@ -28,31 +29,24 @@ public class FinanceControllerTest {
 	@Autowired
 	private ObjectMapper objectMapper;
 	
-    @MockBean
+	@MockBean
     private FinanceService financeService;
-    
-    @Test
-    public void totalByYearTest() throws Exception {
-    	mvc.perform(get("/finance/total-year"))
+	
+	@MockBean
+    private InstituteService InstituteService;
+	
+	@Test
+    public void initDataTest() throws Exception {
+    	mvc.perform(get("/institute/init"))
+    	.andExpect(status().isOk());
+    }
+	
+	@Test
+    public void instituteListTest() throws Exception {
+    	mvc.perform(get("/institute/list"))
     	.andExpect(status().isOk())
     	.andExpect(model().attributeExists("name"))
     	.andExpect(model().attributeExists("data"));
     }
-    
-    @Test
-    public void maxByYearTest() throws Exception {
-    	mvc.perform(get("/finance/max-year"))
-    	.andExpect(status().isOk())
-    	.andExpect(model().attributeExists("year"))
-    	.andExpect(model().attributeExists("bank"));
-    }
-    
-    @Test
-    public void averageMinMaxTest() throws Exception {
-    	mvc.perform(get("/finance/avg-minmax-year"))
-    	.andExpect(status().isOk())
-    	.andExpect(model().attributeExists("bank"))
-    	.andExpect(model().attributeExists("support_amount"));
-    }
-    
+	
 }
