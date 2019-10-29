@@ -36,7 +36,7 @@ public class Finance {
 	
 	@OneToOne(cascade={CascadeType.ALL})
     @JoinColumn(name="code", insertable = false)
-	private Institute institute;
+	private Institute institue;
 	
 
 	//	@ManyToMany(cascade = CascadeType.ALL)

@@ -98,7 +98,7 @@ private Logger logger = LoggerFactory.getLogger(getClass());
 		List<Institute> ins_list = instituteService.getAll();		
 		for(Institute ins : ins_list) {
 			Map<String, String> bank_map = new HashMap<>();
-			bank_map.put(ins.getName(), ins.getCode());
+			bank_map.put(ins.getInstituteName(), ins.getInstituteCode());
 			map_list.add(bank_map);
 		}
 		
@@ -107,7 +107,7 @@ private Logger logger = LoggerFactory.getLogger(getClass());
 		result_map.put("data", map_list);
 		
 		try {
-			return objectMapper.writeValueAsString(result_map);
+			return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(result_map);
 		} catch (JsonProcessingException e) {
 			logger.error(e.getMessage(), e);
 			return "ERROR : Json processing error";

@@ -27,6 +27,10 @@ public class FinanceServiceImpl implements FinanceService {
 		return finRepository.findTotalByYear();
 	}
 	
+	public List<TotalByYear> getTotalByYearAndName(String bank_name, Integer start_year, Integer end_year) {
+		return finRepository.findTotalByYearAndName(bank_name, start_year, end_year);
+	}
+	
 	public void deleteAll() {
 		finRepository.deleteAll();
 	}

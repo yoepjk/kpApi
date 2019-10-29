@@ -33,15 +33,31 @@ public class FinanceRepositoryImpl extends QuerydslRepositorySupport implements 
 		QFinance finance = QFinance.finance;
 		QInstitute institute = QInstitute.institute;
 		
-		List<TotalByYear> result = queryFactory.select(Projections.constructor(TotalByYear.class, finance.year, institute.name, finance.value.sum()))
+		return queryFactory.select(Projections.constructor(TotalByYear.class, finance.year, institute.instituteName, finance.value.sum()))
 				.from(finance)
 				.innerJoin(institute)
-				.on(finance.instituteCode.eq(institute.code))
+				.on(finance.instituteCode.eq(institute.instituteCode))
 				.groupBy(finance.year, finance.instituteCode)
 				.fetch();
-		
-		return result;
 	}
+	
+	@Override
+	public List<TotalByYear> findTotalByYearAndName(String bank_name, Integer start_year, Integer end_year) {
+		JPAQueryFactory queryFactory = new JPAQueryFactory(this.getEntityManager());
+		QFinance finance = QFinance.finance;
+		QInstitute institute = QInstitute.institute;
+		
+		return queryFactory.select(Projections.constructor(TotalByYear.class, finance.year, institute.instituteName, finance.value.sum()))
+				.from(finance)
+				.innerJoin(institute)
+				.on(finance.instituteCode.eq(institute.instituteCode)
+						.and(institute.instituteName.eq(bank_name)))
+				.where(finance.year.goe(start_year)
+						.and(finance.year.loe(end_year)))
+				.groupBy(finance.year)
+				.fetch();
+	}
+	
 	
 	
 }
