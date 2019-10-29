@@ -17,6 +17,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import com.example.yeop.service.FinanceService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+/*
 @RunWith(SpringRunner.class)
 @WebMvcTest(FinanceController.class)
 public class FinanceControllerTest {
@@ -56,3 +57,4 @@ public class FinanceControllerTest {
     }
     
 }
+*/

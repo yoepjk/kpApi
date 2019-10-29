@@ -23,8 +23,7 @@ public class CSVUtilTest {
     	ClassPathResource cpr = new ClassPathResource(path);
     	List<List<String>> datas = new ArrayList<List<String>>();
 		try {
-			FileInputStream csvFile = new FileInputStream(cpr.getFile());
-			InputStreamReader readFile = new InputStreamReader(csvFile, "EUC-KR"); 
+			InputStreamReader readFile = new InputStreamReader(cpr.getInputStream(), "EUC-KR"); 
 			CSVReader csvReader = new CSVReader(readFile);
 			
 			String[] reads;
