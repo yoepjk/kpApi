@@ -11,8 +11,9 @@ kakao pay API 3
   - 패키징된 jar 파일
   
 3. API 상세 (번호 순서대로)
-  1) http://localhost:8080/institute/init             (method : GET)
-  2) http://localhost:8080/institute/list             (method : GET)
-  3) http://localhost:8080/finance/total-year         (method : GET)
-  4) http://localhost:8080/finance/max-year           (method : GET)
-  5) http://localhost:8080/finance/avg-minmax-year    (method : GET)
+  method: GET
+  1) http://localhost:8080/institute/init            
+  2) http://localhost:8080/institute/list             
+  3) http://localhost:8080/finance/total-year        
+  4) http://localhost:8080/finance/max-year           
+  5) http://localhost:8080/finance/avg-minmax-year    
